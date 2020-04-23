@@ -23,6 +23,10 @@ class TMOS < Oxidized::Model
     cfg.gsub!(/^\s+bandwidth-bps (\d+)/, '')
     cfg.gsub!(/^\s+bandwidth-cps (\d+)/, '')
     cfg.gsub!(/^\s+bandwidth-pps (\d+)\n/, '')
+    # remove lets encrypt cert details
+    cfg.gsub!(/sys file ssl-cert [^\/]+\/le_.* {[^}]+}/, '')
+    cfg.gsub!(/sys file ssl-key [^\/]+\/le_.* {[^}]+}/, '')
+    cfg.gsub!(/sys crypto cert [^\/]+\/le_[^ ]+ {.*?(^})/m, '')
     cfg
   end
 
