@@ -130,7 +130,7 @@ module Oxidized
         port:                       (vars(:ssh_port) || 22).to_i
       }
 
-      auth_methods = vars(:auth_methods) || %w[none publickey password]
+      auth_methods = vars(:auth_methods) || %w[none publickey password keyboard-interactive]
       ssh_opts[:auth_methods] = auth_methods
       Oxidized.logger.debug "AUTH METHODS::#{auth_methods}"
 
