@@ -46,6 +46,7 @@ class TMOS < Oxidized::Model
     cfg.gsub!(/sys db configsync.localconfigtime {[^}]+}/m, '')
     cfg.gsub!(/sys db gtm.configtime {[^}]+}/m, '')
     cfg.gsub!(/sys db ltm.configtime {[^}]+}/m, '')
+    cfg.gsub!(/sys db platform.diskmonitor.time.shared {[^}]+}/m, '')
     comment cfg
   end
 
