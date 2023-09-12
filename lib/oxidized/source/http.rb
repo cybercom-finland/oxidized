@@ -71,7 +71,8 @@ module Oxidized
         next_key = @cfg.pagination_key_name
         loop do
           data = JSON.parse(response.body)
-          node_data += string_navigate(data, @cfg.hosts_location) if @cfg.hosts_location?
+          data = string_navigate(data, @cfg.hosts_location) if @cfg.hosts_location?
+          node_data += data
           break if data[next_key].nil?
 
           new_uri = URI.parse(data[next_key]) if data.has_key?(next_key)
@@ -81,7 +82,8 @@ module Oxidized
       # since new feature; dont break curent configs
       else
         data = JSON.parse(response.body)
-        node_data += string_navigate(data, @cfg.hosts_location) if @cfg.hosts_location?
+        data = string_navigate(data, @cfg.hosts_location) if @cfg.hosts_location?
+        node_data += data
       end
       node_data
     end
